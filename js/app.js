@@ -24,8 +24,37 @@ function calculatePercentMoney(money, period) {
     for (let i = 1; i < period; i++){
         moneyWithPercent += moneyWithPercent * monthPercent;
     }
-    return moneyWithPercent.toFixed(0);
+
+    const totalMoney = moneyWithPercent.toFixed(0);
+
+    return {
+        totalMoney,
+        profitMoney: totalMoney - money,
+        percent: percent(period),
+    };
 }
 
-console.log(calculatePercentMoney(950000, 9));
+function handleSubmit(evt){
+    evt.preventDefault();
 
+    totalEl.textContent = '';
+    profitEl.textContent = '';
+    percentEl.textContent = '';
+
+    const amountInput = Number(amountInputEl.value);
+    const periodInput = Number(periodInputEl.value);
+    const result = calculatePercentMoney(amountInput, periodInput);
+
+    totalEl.textContent = result.totalMoney;
+    profitEl.textContent = result.profitMoney;
+    percentEl.textContent = result.percent;
+}
+
+const amountInputEl = document.getElementById('amount-input');
+const periodInputEl = document.getElementById('period-input');
+const totalEl = document.getElementById('total');
+const profitEl = document.getElementById('profit');
+const percentEl = document.getElementById('percent');
+
+const formEl = document.getElementById('deposit-form');
+formEl.addEventListener('submit', handleSubmit);
