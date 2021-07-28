@@ -51,13 +51,13 @@ function handleSubmit(evt){
 
     const minAmount = 15000;
     if (amountInput < minAmount){
-        amountErrorEl.textContent = 'Неверное значение. Минимальная сумма: 15 000 ₽';
+        amountErrorEl.textContent = 'Неверное значение. Минимальная сумма: 15000 ₽';
         return;
     }
 
     const maxAmount = 50000000;
     if (amountInput > maxAmount){
-        amountErrorEl.textContent = 'Неверное значение. Максимальная сумма: 50 000 000 ₽';
+        amountErrorEl.textContent = 'Неверное значение. Максимальная сумма: 50000000 ₽';
         return;
     }
 
